@@ -1,0 +1,23 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+with webdriver.Firefox() as driver:
+    driver.get("https://training-support.net/webelements/tables")
+    title=driver.title
+    print("Title of the page is: ",title)
+
+    rows=driver.find_elements(By.XPATH, "//table/tbody/tr")
+    print("No. of Rows: ",len(rows))
+
+    columns=driver.find_elements(By.XPATH, "//table/tbody/tr[1]/td")
+    print("No. of Columns: ",len(columns))
+
+    thirdRow=driver.find_elements(By.XPATH, "//table/tbody/tr[3]/td")
+    print("Third Row cell values: ")
+    for cell in thirdRow:
+        print(cell.text)
+
+    value=driver.find_element(By.XPATH,"//table/tbody/tr[2]/td[2]")
+    print("Second Row Second Column value is: ",value.text)
+
+
